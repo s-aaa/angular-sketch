@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="sketch">
+<head>
+	<meta charset="UTF-8">
+	<title>sketch</title>
+	<script src="./js/angular.js"></script>
+	<script src="./js/index.js"></script>
+	<link rel="stylesheet" href="./css/index.css">
+</head>
+<body ng-controller="sketchController">
+	<div class="controls">
+		<div class="tools" ng-repeat="(key, value) in tools" ng-click="settool(value)" ng-class="{active:value==tool}">
+			<span>{{key}}</span>
+		</div>
+		<div class="hr"></div>
+		<div class="fill-stroke" ng-class="{active:csState.style=='fill'}" ng-click="setStyle('fill')">填充
+			<input type="color" ng-model="csState.fillStyle">
+		</div>
+		<div class="fill-stroke" ng-class="{active:csState.style=='stroke'}" ng-click="setStyle('stroke')">画线
+		<input type="color" ng-model="csState.strokeStyle">
+		</div>
+		<div class="linewidth">线宽度<input type="range" min="1" max="50" step="1" ng-model="csState.lineWidth"></div>
+
+		<div class="hr"></div>
+
+		<div ng-click="newSketch()" class="newsketch">新建</div>
+		<a ng-click="save($event)" class="newsketch">保存</a>
+		<div class="newsketch">回退</div>
+		<div class="hr"></div>
+		<div class="huabusize">
+			<div>调整画布：</div>
+			<div>宽：<input ng-model="canvasWH.width" type="range" min="400" max="800" step="1"></div>
+			<div>高：<input ng-model="canvasWH.height" type="range" min="400" max="800" step="1"></div>
+		</div>
+		
+		
+		
+	</div>
+	<div class="drawregion">
+		<canvas id="canvas" width="{{canvasWH.width}}" height="{{canvasWH.height}}"></canvas>
+	</div>
+</body>
+</html>
