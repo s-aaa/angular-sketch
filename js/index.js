@@ -2,8 +2,8 @@ var sketch=angular.module('sketch',[]);
 sketch.controller('sketchController', ['$scope', function($scope){
 	$scope.canvasWH={width:600,height:600};
 	$scope.csState={
-		fillStyle:'#ff00ff',
-		strokeStyle:'#ff00ff',
+		fillStyle:'#26c6da',
+		strokeStyle:'#26c6da',
 		lineWidth:1,
 		style:'stroke'
 	}
